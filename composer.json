@@ -8,6 +8,7 @@
         }
     ],
     "require": {
-        "illuminate/database": "^7.30"
+        "illuminate/database": "^7.30",
+        "nezamy/route": "^1.3"
     }
 }
