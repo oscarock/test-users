@@ -1,0 +1,4 @@
+### Proyecto ###
+/vendor/
+node_modules/
+.env
