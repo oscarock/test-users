@@ -8,8 +8,11 @@ $app->route     = System\Route::instance($app->request);
 
 $route          = $app->route;
 
-$route->get('/', function() {
-    echo "prueba ruta";
+$route->get('/registrarse', function() {
+    $blade = new Blade('views', 'cache');
+    echo $blade->make('register')->render();
 });
+
+$route->post('/registerUser', 'Controllers\UserController@registerUser');
 
 $route->end();
