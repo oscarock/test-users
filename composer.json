@@ -1,0 +1,11 @@
+{
+    "name": "oscarock/zinobe",
+    "description": "prueba usuarios",
+    "authors": [
+        {
+            "name": "Oscar Diaz",
+            "email": "oscarock02@gmail.com"
+        }
+    ],
+    "require": {}
+}
