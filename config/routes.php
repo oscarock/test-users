@@ -28,4 +28,6 @@ $route->post('/registerUser', 'Controllers\UserController@registerUser');
 $route->post('/loginUser', 'Controllers\UserController@login');
 $route->get('/logout', 'Controllers\UserController@logout');
 
+$route->get('/service-external-save', 'Controllers\UserController@serviceExternalSave');
+
 $route->end();

@@ -3,6 +3,7 @@
 
 	use Jenssegers\Blade\Blade;
 	use Models\User;
+	use Services\CustomerData;
 
 	class UserController{
 
@@ -52,5 +53,28 @@
 			session_unset();
 			session_destroy();
 			header('Location: /');
+		}
+
+		public function serviceExternalSave(){
+			session_start();
+			unset($_SESSION['users']);
+			if(isset($_SESSION["authenticated"])){
+				$customerData = new CustomerData;
+				$results = $customerData->loadData();
+				foreach($results as $users){
+					$user = new User;
+					$user->name = $users->first_name." ".$users->last_name;
+					$user->document = $users->document;
+					$user->email = $users->email;
+					$user->password = password_hash("pordefecto1", PASSWORD_BCRYPT);
+					$user->country = $users->country;
+					$user->save();
+				}
+				$users = User::all();
+				$_SESSION["users"] = $users;
+				header('Location: ingreso');
+			}else{
+				echo $this->blade->make('error', ['errors' => 'No tienes Permisos para esta accion ingresa al sistema para poder acceder.'])->render();
+			}
 		}
     }
