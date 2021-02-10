@@ -77,4 +77,22 @@
 				echo $this->blade->make('error', ['errors' => 'No tienes Permisos para esta accion ingresa al sistema para poder acceder.'])->render();
 			}
 		}
+
+		public function searchUsers(){
+			session_start();
+			if(isset($_SESSION["authenticated"])){
+				$search = $_GET['search'];
+				$users = "";
+				session_start();
+				$_SESSION["authenticated"] = true;
+				if(empty($search)){
+					$_SESSION["users"] = User::all();
+				}else{
+					$_SESSION["users"] = User::where('email', $search)->orWhere('name', 'like', '%' . $search . '%')->get();
+				}
+				header("Location: ingreso");
+			}else{
+				echo $this->blade->make('error', ['errors' => 'No tienes Permisos para esta accion ingresa al sistema para poder acceder.'])->render();
+			}
+		}
     }

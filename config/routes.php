@@ -29,5 +29,6 @@ $route->post('/loginUser', 'Controllers\UserController@login');
 $route->get('/logout', 'Controllers\UserController@logout');
 
 $route->get('/service-external-save', 'Controllers\UserController@serviceExternalSave');
+$route->get('/searchUsers', 'Controllers\UserController@searchUsers');
 
 $route->end();
