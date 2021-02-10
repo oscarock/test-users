@@ -7,5 +7,7 @@
             "email": "oscarock02@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "illuminate/database": "^7.30"
+    }
 }
